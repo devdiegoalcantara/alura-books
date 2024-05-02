@@ -1,10 +1,10 @@
-let livros = []
-const endpointDaAPI = 'https://guilhermeonrails.github.io/casadocodigo/livros.json'
-getBuscarLivrosDaAPI()
 
-async function getBuscarLivrosDaAPI() {
-    const res = await fetch(endpointDaAPI)
-    livros = await res.json()
-    livros = aplicarDesconto(livros)
-    exibirOsLivrosNaTela(livrosComDesconto)
+const botoes = document.querySelectorAll('.btn')
+botoes.forEach(btn => btn.addEventListener('click', filtrarLivros))
+
+function filtrarLivros() {
+    const elementoBtn = document.getElementById(this.id)
+    const categoria = elementoBtn.value
+    let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria)
+    exibirOsLivrosNaTela(livrosFiltrados)
 }
