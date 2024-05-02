@@ -6,6 +6,7 @@ function filtrarLivros() {
     const categoria = elementoBtn.value
     let livrosFiltrados = categoria == 'disponivel' ? filtrarPorDisponibilidade() : FiltrarPorCategoria(categoria)
     exibirOsLivrosNaTela(livrosFiltrados)
+    
     if (categoria == 'disponivel') {
         const valorTotal = calcularValorTotalDeLivrosDisponiveis(livrosFiltrados)
         exibirValorTotalDosLivrosDisponiveisNaTela(valorTotal)
